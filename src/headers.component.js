@@ -6,10 +6,10 @@ export default class Headers extends React.Component {
 	render() {
 		let inputs = map(this.props.headers, (header, index) => {
 			return (
-				<div className="cps-form-group">
+				<div className="cps-form-group" key={index}>
 					<label for="exampleInputEmail1" className="cps-col-xs-2 cps-control-label">{index === 0 ? 'Headers' : ''}</label>
 					<div className='cps-row'>
-						<KeyValue onDelete={this.deleteHeader.bind(this, index)} key={index} keyValue={header.key} value={header.value} onChange={this.updateHeader.bind(this, index)}/>
+						<KeyValue onDelete={this.deleteHeader.bind(this, index)} keyValue={header.key} value={header.value} onChange={this.updateHeader.bind(this, index)}/>
 					</div>
 				</div>
 			);

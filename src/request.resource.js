@@ -51,14 +51,38 @@ export function	sendRequest(request, getRequest) {
 	let headers = {};
 	request.headers.forEach((header) => {
 		if (header.key) {
-			headers[header.key] = header.value;
+			let value;
+
+			try {
+				value = Number.parseFloat(header.value, 10)
+			} catch(error) {
+				value = header.value;
+			}
+
+			if (value+'' === header.value) {
+				headers[header.key] = value;
+			} else {
+				headers[header.key] = header.value;
+			}
 		}
 	});
 
 	let parameters = {};
 	request.parameters.forEach((param) => {
 		if (param.key) {
-			parameters[param.key] = param.value;
+			let value;
+
+			try {
+				value = Number.parseFloat(param.value, 10)
+			} catch(error) {
+				value = param.value;
+			}
+
+			if (value+'' === param.value) {
+				parameters[param.key] = value;
+			} else {
+				parameters[param.key] = param.value;
+			}
 		}
 	});
 
