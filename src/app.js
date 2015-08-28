@@ -22,9 +22,6 @@ class App extends React.Component {
 				</div>
 				<div className='cps-nav-content +full'>
 					<div className='cps-flexible-focus cps-card'>
-						<div className='cps-card__header cps-subheader'>
-							RXWS Tester
-						</div>
 						<div className='cps-card__body'>
 							<Form/>
 						</div>

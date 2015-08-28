@@ -30,13 +30,13 @@ export function getDefaultRequest(force=false) {
 		return getBlankRequest();
 	}
 
-	let storageItem = localStorage.getItem('rxws-tester-resource');
+	//let storageItem = chrome.storage.local.get('rxws-tester-resource');
 
-	return storageItem ? JSON.parse(storageItem) : getBlankRequest();
+	return getBlankRequest();
 }
 
 export function saveRequest(request) {
-	localStorage.setItem('rxws-tester-resource', JSON.stringify(request));
+	//chrome.storage.local.set('rxws-tester-resource', JSON.stringify(request));
 }
 
 export function	sendRequest(request, getRequest) {
