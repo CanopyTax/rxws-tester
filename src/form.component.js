@@ -20,6 +20,17 @@ export default class Form extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		chrome.storage.local.get('data', (data) => {
+			console.log(data);
+			if (data.data) {
+				this.setState({
+					request: data.data
+				});
+			}
+		})
+	}
+
 	render() {
 		let request = this.state.request;
 
@@ -100,12 +111,16 @@ export default class Form extends React.Component {
 	}
 
 	updateRequest(newRequest) {
+		let req = {
+			...this.state.request,
+			...newRequest
+		}
+
 		this.setState({
-			request: {
-				...this.state.request,
-				...newRequest
-			}
+			request: req
 		})
+
+		chrome.storage.local.set({'data': req});
 	}
 
 	changeMethod(e) {
